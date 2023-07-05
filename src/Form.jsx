@@ -1,15 +1,7 @@
-import { Link } from "react-router-dom";
+import Header from "./Header";
 
 const Form = () => {
-  return (
-    <nav>
-      <div className="nav-wrapper">
-        <Link to="/school-register/" className="brand-logo">
-          School Registration Form
-        </Link>
-      </div>
-    </nav>
-  );
+  return <Header />;
 };
 
 export default Form;
