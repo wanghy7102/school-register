@@ -1,29 +1,48 @@
 import { useState } from "react";
-import Header from "./Header";
 
 const Form = () => {
   const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
 
   return (
-    <>
-      <Header />
-      <div className="row">
-        <form className="col s12">
-          <div className="row">
-            <div className="input-field col s6">
+    <div className="formbold-main-wrapper">
+      <div className="formbold-form-wrapper">
+        <form method="POST">
+          <div className="formbold-form-title">
+            <h2>Register now</h2>
+          </div>
+
+          <div className="formbold-input-flex">
+            <div>
+              <label htmlFor="firstName" className="formbold-form-label">
+                First Name
+              </label>
               <input
-                id="firstName"
                 type="text"
-                className="validate"
+                name="firstName"
+                id="firstName"
+                className="formbold-form-input"
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
               />
-              <label htmlFor="firstName">First Name</label>
+            </div>
+            <div>
+              <label for="lastName" className="formbold-form-label">
+                Last name
+              </label>
+              <input
+                type="text"
+                name="lastName"
+                id="lastName"
+                className="formbold-form-input"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+              />
             </div>
           </div>
         </form>
       </div>
-    </>
+    </div>
   );
 };
 
