@@ -14,8 +14,10 @@ const Form = () => {
 
   const onSubmit = (e) => {
     const token = captchaRef.current.getValue();
-    captchaRef.current.reset();
-    navigate("/school-register/success");
+    if (token) {
+      captchaRef.current.reset();
+      navigate("/school-register/success");
+    }
   };
 
   return (
@@ -39,7 +41,11 @@ const Form = () => {
               required: "First Name is required.",
             })}
           />
-          {errors.firstName && <span>{errors.firstName.message}</span>}
+          {errors.firstName && (
+            <span className="formbold-form-error">
+              {errors.firstName.message}
+            </span>
+          )}
         </div>
         <div>
           <label htmlFor="lastName" className="formbold-form-label">
@@ -54,7 +60,11 @@ const Form = () => {
               required: "Last Name is required.",
             })}
           />
-          {errors.lastName && <span>{errors.lastName.message}</span>}
+          {errors.lastName && (
+            <span className="formbold-form-error">
+              {errors.lastName.message}
+            </span>
+          )}
         </div>
       </div>
 
@@ -72,7 +82,9 @@ const Form = () => {
               required: "Email is required.",
             })}
           />
-          {errors.email && <span>{errors.email.message}</span>}
+          {errors.email && (
+            <span className="formbold-form-error">{errors.email.message}</span>
+          )}
         </div>
         <div>
           <label htmlFor="phone" className="formbold-form-label">
@@ -87,7 +99,9 @@ const Form = () => {
               required: "Phone Number is required.",
             })}
           />
-          {errors.phone && <span>{errors.phone.message}</span>}
+          {errors.phone && (
+            <span className="formbold-form-error">{errors.phone.message}</span>
+          )}
         </div>
       </div>
 
@@ -104,7 +118,9 @@ const Form = () => {
             required: "Street Address is required.",
           })}
         />
-        {errors.address && <span>{errors.address.message}</span>}
+        {errors.address && (
+          <span className="formbold-form-error">{errors.address.message}</span>
+        )}
       </div>
 
       <div className="formbold-mb-3">
@@ -118,7 +134,9 @@ const Form = () => {
           className="formbold-form-input"
           {...register("address2", {})}
         />
-        {errors.address2 && <span>{errors.address2.message}</span>}
+        {errors.address2 && (
+          <span className="formbold-form-error">{errors.address2.message}</span>
+        )}
       </div>
 
       <div className="formbold-input-flex">
@@ -135,7 +153,9 @@ const Form = () => {
               required: "State/Province is required.",
             })}
           />
-          {errors.state && <span>{errors.state.message}</span>}
+          {errors.state && (
+            <span className="formbold-form-error">{errors.state.message}</span>
+          )}
         </div>
         <div>
           <label htmlFor="country" className="formbold-form-label">
@@ -150,7 +170,11 @@ const Form = () => {
               required: "Country is required.",
             })}
           />
-          {errors.country && <span>{errors.country.message}</span>}
+          {errors.country && (
+            <span className="formbold-form-error">
+              {errors.country.message}
+            </span>
+          )}
         </div>
       </div>
 
@@ -168,7 +192,9 @@ const Form = () => {
               required: "Post/Zip Code is required.",
             })}
           />
-          {errors.post && <span>{errors.post.message}</span>}
+          {errors.post && (
+            <span className="formbold-form-error">{errors.post.message}</span>
+          )}
         </div>
         <div>
           <label htmlFor="area" className="formbold-form-label">
@@ -183,7 +209,9 @@ const Form = () => {
               required: "Area Code is required.",
             })}
           />
-          {errors.area && <span>{errors.area.message}</span>}
+          {errors.area && (
+            <span className="formbold-form-error">{errors.area.message}</span>
+          )}
         </div>
       </div>
 
