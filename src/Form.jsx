@@ -15,6 +15,8 @@ const Form = () => {
   return (
     <div className="formbold-main-wrapper">
       <div className="formbold-form-wrapper">
+        <img style={{ width: "100%" }} src="img/school.jpg" />
+
         <form method="POST">
           <div className="formbold-form-title">
             <h2>Register now</h2>
