@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import ReCAPTCHA from "react-google-recaptcha";
 
 const Form = () => {
@@ -13,9 +14,17 @@ const Form = () => {
   const [post, setPost] = useState("");
   const [area, setArea] = useState("");
   const captchaRef = useRef(null);
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const token = captchaRef.current.getValue();
+    captchaRef.current.reset();
+    navigate("/school-register/success");
+  };
 
   return (
-    <form method="POST">
+    <form onSubmit={(e) => handleSubmit(e)}>
       <div className="formbold-form-title">
         <h2>School Registration</h2>
         <p>Fill out the form carefully for registration</p>
