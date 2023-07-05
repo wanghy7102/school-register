@@ -19,7 +19,8 @@ const Form = () => {
 
         <form method="POST">
           <div className="formbold-form-title">
-            <h2>Register now</h2>
+            <h2>School Registration</h2>
+            <p>Fill out the form carefully for registration</p>
           </div>
 
           <div className="formbold-input-flex">
