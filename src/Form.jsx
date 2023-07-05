@@ -1,30 +1,25 @@
 import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
 import ReCAPTCHA from "react-google-recaptcha";
 
 const Form = () => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [address, setAddress] = useState("");
-  const [address2, setAddress2] = useState("");
-  const [state, setState] = useState("");
-  const [country, setCountry] = useState("");
-  const [post, setPost] = useState("");
-  const [area, setArea] = useState("");
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
   const captchaRef = useRef(null);
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const onSubmit = (e) => {
     const token = captchaRef.current.getValue();
     captchaRef.current.reset();
     navigate("/school-register/success");
   };
 
   return (
-    <form onSubmit={(e) => handleSubmit(e)}>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <div className="formbold-form-title">
         <h2>School Registration</h2>
         <p>Fill out the form carefully for registration</p>
@@ -40,22 +35,26 @@ const Form = () => {
             name="firstName"
             id="firstName"
             className="formbold-form-input"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
+            {...register("firstName", {
+              required: "First Name is required.",
+            })}
           />
+          {errors.firstName && <span>{errors.firstName.message}</span>}
         </div>
         <div>
           <label htmlFor="lastName" className="formbold-form-label">
-            Last name
+            Last Name
           </label>
           <input
             type="text"
             name="lastName"
             id="lastName"
             className="formbold-form-input"
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
+            {...register("lastName", {
+              required: "Last Name is required.",
+            })}
           />
+          {errors.lastName && <span>{errors.lastName.message}</span>}
         </div>
       </div>
 
@@ -69,9 +68,11 @@ const Form = () => {
             name="email"
             id="email"
             className="formbold-form-input"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            {...register("email", {
+              required: "Email is required.",
+            })}
           />
+          {errors.email && <span>{errors.email.message}</span>}
         </div>
         <div>
           <label htmlFor="phone" className="formbold-form-label">
@@ -82,9 +83,11 @@ const Form = () => {
             name="phone"
             id="phone"
             className="formbold-form-input"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
+            {...register("phone", {
+              required: "Phone Number is required.",
+            })}
           />
+          {errors.phone && <span>{errors.phone.message}</span>}
         </div>
       </div>
 
@@ -97,9 +100,11 @@ const Form = () => {
           name="address"
           id="address"
           className="formbold-form-input"
-          value={address}
-          onChange={(e) => setAddress(e.target.value)}
+          {...register("address", {
+            required: "Street Address is required.",
+          })}
         />
+        {errors.address && <span>{errors.address.message}</span>}
       </div>
 
       <div className="formbold-mb-3">
@@ -111,9 +116,9 @@ const Form = () => {
           name="address2"
           id="address2"
           className="formbold-form-input"
-          value={address2}
-          onChange={(e) => setAddress2(e.target.value)}
+          {...register("address2", {})}
         />
+        {errors.address2 && <span>{errors.address2.message}</span>}
       </div>
 
       <div className="formbold-input-flex">
@@ -126,9 +131,11 @@ const Form = () => {
             name="state"
             id="state"
             className="formbold-form-input"
-            value={state}
-            onChange={(e) => setState(e.target.value)}
+            {...register("state", {
+              required: "State/Province is required.",
+            })}
           />
+          {errors.state && <span>{errors.state.message}</span>}
         </div>
         <div>
           <label htmlFor="country" className="formbold-form-label">
@@ -139,25 +146,29 @@ const Form = () => {
             name="country"
             id="country"
             className="formbold-form-input"
-            value={country}
-            onChange={(e) => setCountry(e.target.value)}
+            {...register("country", {
+              required: "Country is required.",
+            })}
           />
+          {errors.country && <span>{errors.country.message}</span>}
         </div>
       </div>
 
       <div className="formbold-input-flex">
         <div>
           <label htmlFor="post" className="formbold-form-label">
-            Post/Zip code
+            Post/Zip Code
           </label>
           <input
             type="text"
             name="post"
             id="post"
             className="formbold-form-input"
-            value={post}
-            onChange={(e) => setPost(e.target.value)}
+            {...register("post", {
+              required: "Post/Zip Code is required.",
+            })}
           />
+          {errors.post && <span>{errors.post.message}</span>}
         </div>
         <div>
           <label htmlFor="area" className="formbold-form-label">
@@ -168,9 +179,11 @@ const Form = () => {
             name="area"
             id="area"
             className="formbold-form-input"
-            value={area}
-            onChange={(e) => setArea(e.target.value)}
+            {...register("area", {
+              required: "Area Code is required.",
+            })}
           />
+          {errors.area && <span>{errors.area.message}</span>}
         </div>
       </div>
 
