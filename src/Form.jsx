@@ -216,7 +216,7 @@ const Form = () => {
       </div>
 
       <ReCAPTCHA
-        sitekey="6LdIMu0mAAAAAPHfVMafykLbrDDVuVjFWJ9QMYNl"
+        sitekey="6LcS1CgnAAAAAOYPOn3d3KpWgpmwQOF-rAGsSNcE"
         ref={captchaRef}
       />
 
